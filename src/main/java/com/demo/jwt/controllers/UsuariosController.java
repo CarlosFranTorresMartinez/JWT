@@ -7,9 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Creado por  Ascari Q. Romo Pedraza - molder.itp@gmail.com on 28/04/17.
- */
 @RestController
 public class UsuariosController {
 

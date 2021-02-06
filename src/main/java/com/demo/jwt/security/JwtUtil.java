@@ -17,14 +17,14 @@ public class JwtUtil {
     static void addAuthentication(HttpServletResponse res, String username) {
 
         String token = Jwts.builder()
-            .setSubject(username)
+                .setSubject(username)
 
-            // Vamos a asignar un tiempo de expiracion de 1 minuto
-            .setExpiration(new Date(System.currentTimeMillis() + 60000))
+                // Vamos a asignar un tiempo de expiracion de 1 minuto
+                .setExpiration(new Date(System.currentTimeMillis() + 60000))
 
-            // Hash con el que firmaremos la clave
-            .signWith(SignatureAlgorithm.HS512, "P@tit0")
-            .compact();
+                // Hash con el que firmaremos la clave
+                .signWith(SignatureAlgorithm.HS512, "VG")
+                .compact();
 
         //agregamos al encabezado el token
         res.addHeader("Authorization", "Bearer " + token);
@@ -39,7 +39,7 @@ public class JwtUtil {
         // si hay un token presente, entonces lo validamos
         if (token != null) {
             String user = Jwts.parser()
-                    .setSigningKey("P@tit0")
+                    .setSigningKey("VG")
                     .parseClaimsJws(token.replace("Bearer", "")) //este metodo es el que valida
                     .getBody()
                     .getSubject();
